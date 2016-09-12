@@ -75,6 +75,10 @@ $table_prefix  = 'wp_';
  */
 define('WP_DEBUG', false);
 
+//need this for heroku
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == "https") $_SERVER['HTTPS']="on";
+
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
