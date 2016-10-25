@@ -182,7 +182,10 @@ class PDOEngine extends PDO {
 			do {
 				try {
                     if(array_key_exists("DATABASE_URL", $_ENV)){
-                        $this->pdo = new PDO("pgsql:dbname=" . DB_NAME . ";host=" . DB_HOST, DB_USER, DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                        echo "database url: ", $_ENV["DATABASE_URL"], "<br />";
+                        $dsn = "pgsql:dbname=" . DB_NAME . ";host=" . DB_HOST;
+                        echo "dsn: ", $dsn, "<br />";
+                        $this->pdo = new PDO($dsn, DB_USER, DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
                     }
                     else
