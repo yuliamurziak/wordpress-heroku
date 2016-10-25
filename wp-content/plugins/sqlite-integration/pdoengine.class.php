@@ -205,6 +205,7 @@ class PDOEngine extends PDO {
 					} else {
 						$err_message = $ex->getMessage();
 					}
+                    print_r($ex);
 				}
 			} while ($locked);
 			if ($status > 0) {
