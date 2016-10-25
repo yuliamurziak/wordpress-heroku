@@ -181,7 +181,14 @@ class PDOEngine extends PDO {
 			$status = 0;
 			do {
 				try {
-					$this->pdo = new PDO($dsn, null, null, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                    if(array_key_exists("DATABASE_URL", $_ENV)){
+                        $this->pdo = new PDO("pgsql:dbname=" . DB_NAME . ";host=" . DB_HOST, DB_USER, DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+                    }
+                    else
+                    {
+					   $this->pdo = new PDO($dsn, null, null, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                    }
 					require_once UDF_FILE;
 					new PDOSQLiteUDFS($this->pdo);
 					$GLOBALS['@pdo'] = $this->pdo;
