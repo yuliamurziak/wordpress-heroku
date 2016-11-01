@@ -181,20 +181,7 @@ class PDOEngine extends PDO {
 			$status = 0;
 			do {
 				try {
-                    if(array_key_exists("DATABASE_URL", $_ENV)){
-                        error_reporting(E_ALL);
-                        echo "database url: ", $_ENV["DATABASE_URL"], "<br />";
-                        $dsn = "pgsql:dbname=" . DB_NAME . ";host=" . DB_HOST . ";port=5432;sslmode=require";
-                        echo "dsn: ", $dsn, "<br />";
-                        echo "User: ", DB_USER, "<br />";
-                        echo "Password: ", DB_PASSWORD, "<br />";
-                        $this->pdo = new PDO($dsn, DB_USER, DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-                    }
-                    else
-                    {
-					   $this->pdo = new PDO($dsn, null, null, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-                    }
+					$this->pdo = new PDO($dsn, null, null, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 					require_once UDF_FILE;
 					new PDOSQLiteUDFS($this->pdo);
 					$GLOBALS['@pdo'] = $this->pdo;
@@ -205,7 +192,6 @@ class PDOEngine extends PDO {
 					} else {
 						$err_message = $ex->getMessage();
 					}
-                    print_r($ex);
 				}
 			} while ($locked);
 			if ($status > 0) {
