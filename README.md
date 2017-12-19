@@ -23,23 +23,9 @@ Multimedia can also not be stored there for the same reasons. You will need to a
 
 ## Updating
 
-Updating your WordPress version is just a matter of merging the updates into
-the branch created from the installation.
+Updating is pretty much guaranteed to fail. The postgres database connection won't survive the update. I have tried at various times to fix this and failed. You can see what I have tried on the master branch of this repository. There is definitely some security risk to using this. Only you can decide whether demonstrating your work for free is worth the risk of using outdated software.
 
-    $ git pull # Get the latest
-
-Using the same branch name from our installation:
-
-    $ git checkout production
-    $ git merge master # Merge latest
-    $ git push heroku production:master
-
-WordPress needs to update the database. After push, navigate to:
-
-    http://your-app-url.herokuapp.com/wp-admin
-
-WordPress will prompt for updating the database. After that you'll be good
-to go.
+Because this can't be updated to newer versions of wordpress newer plugins and themes may also refuse to run.
 
 ## Deployment optimisation
 
