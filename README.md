@@ -25,7 +25,7 @@ Multimedia can also not be stored there for the same reasons. You will need to a
 
 Updating is pretty much guaranteed to fail. The postgres database connection won't survive the update. I have tried at various times to fix this and failed. You can see what I have tried on the master branch of this repository. There is definitely some security risk to using this. Only you can decide whether demonstrating your work for free is worth the risk of using outdated software.
 
-Because this can't be updated to newer versions of wordpress newer plugins and themes may also refuse to run.
+Because this can't be updated to newer versions of wordpress newer plugins and themes may also refuse to run. So far this seems to be more of a problem for plugins than themes.
 
 ## Deployment optimisation
 
